@@ -16,7 +16,7 @@ public final class GboardGlassSettingsTest {
     public void glassOverlayIsOptInByDefault() {
         Context context = RuntimeEnvironment.getApplication();
         SharedPreferences preferences = GboardGlassSettings.preferences(context);
-        preferences.edit().clear().commit();
+        preferences.edit().remove(GboardGlassSettings.PREF_KEY_ENABLED).commit();
         GboardGlassSettings.invalidateCache();
 
         Assert.assertFalse(GboardGlassSettings.readEnabled(preferences));
