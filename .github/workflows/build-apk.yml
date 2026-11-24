@@ -1,0 +1,57 @@
+name: Build PixelBoard Glass Test APK
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Set up OpenJDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Download stock Gboard base APK
+        run: |
+          mkdir -p input
+          gh release download glass-base-assets --repo lycuongmc09-crypto/PixelBoard -p 'gboard-base.apk' -D input
+          mv input/gboard-base.apk input/gboard.apk
+          ls -lh input/gboard.apk
+
+      - name: Build patch bundle
+        run: |
+          chmod +x pixelboard-patches/gradlew
+          cd pixelboard-patches
+          ./gradlew :patches:buildAndroid -x test --no-daemon
+          cd ..
+          MPP=$(ls pixelboard-patches/patches/build/libs/patches-*.mpp | head -n 1)
+          echo "Using $MPP"
+          cp "$MPP" patches/PixelBoard.mpp
+
+      - name: Patch and sign APK
+        run: |
+          chmod +x build.sh
+          ./build.sh input/gboard.apk
+          ls -lh output/*.apk
+
+      - name: Upload test APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: pixelboard-glass-test-apk
+          path: |
+            output/PixelBoard.apk
+            output/PixelBoard-*.apk
+          if-no-files-found: error
