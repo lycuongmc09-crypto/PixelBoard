@@ -5,12 +5,14 @@ on:
 
 permissions:
   contents: read
+  packages: read
 
 jobs:
   build-apk:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
