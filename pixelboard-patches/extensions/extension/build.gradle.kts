@@ -281,6 +281,12 @@ tasks.named("preBuild") {
     dependsOn(generateSettingsText)
 }
 
+// repo1.maven.org rate-limits CI heavily; use the canonical Maven Central host
+// for Robolectric's runtime android-all artifacts.
+tasks.withType<org.gradle.api.tasks.testing.Test>().configureEach {
+    systemProperty("robolectric.dependency.repo.url", "https://repo.maven.apache.org/maven2")
+}
+
 tasks.named("syncExtension") {
     doLast {
         val extensionDex = layout.buildDirectory.asFileTree.matching {
