@@ -81,6 +81,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.VideoView;
 import com.akshaykadam.pixelboard.extension.advancedvoice.GboardAdvancedVoiceSettings;
+import com.akshaykadam.pixelboard.extension.glass.GboardGlassOverlayRuntime;
+import com.akshaykadam.pixelboard.extension.glass.GboardGlassSettings;
 import com.akshaykadam.pixelboard.extension.writingtools.GboardAiWritingToolsSettings;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -3128,6 +3130,7 @@ public final class GboardPatchesSettingsActivity extends Activity
             GboardRoundedKeysSettings.ensureDefaults(context, patchesPrefs);
             GboardGoogleSansSettings.ensureDefaults(context, patchesPrefs);
             GboardUndoSettings.ensureDefaults(context, patchesPrefs);
+            GboardGlassSettings.ensureDefaults(patchesPrefs);
         }
 
         boolean aiWritingToolsEnabled = writingPrefs == null
@@ -3138,6 +3141,8 @@ public final class GboardPatchesSettingsActivity extends Activity
                 || GboardAdvancedVoiceSettings.readEnabled(voicePrefs);
         boolean roundedKeysEnabled = patchesPrefs == null
                 || GboardRoundedKeysSettings.readEnabled(patchesPrefs);
+        boolean glassOverlayEnabled = patchesPrefs != null
+                && GboardGlassSettings.readEnabled(patchesPrefs);
         boolean frequentEmojisEnabled = patchesPrefs != null
                 && GboardEmojiSettings.readFrequentEmojisEnabled(patchesPrefs);
         boolean skipDuplicateLanguagePairs = patchesPrefs != null
@@ -3189,6 +3194,21 @@ public final class GboardPatchesSettingsActivity extends Activity
                     if (patchesPrefs != null) {
                         GboardRoundedKeysSettings.writeEnabled(patchesPrefs, value);
                         GboardRoundedKeysSettings.applyToGboardPreferences(context, value);
+                        renderCurrentScreenSafely();
+                    }
+                }));
+
+        rows.add(new GboardPatchesSettingsContract.ToggleRow(
+                GboardSettingsText.get(context, R.string.gboard_patches_glass_overlay_enabled_title),
+                GboardSettingsText.get(context, R.string.gboard_patches_glass_overlay_enabled_summary),
+                true,
+                glassOverlayEnabled,
+                value -> {
+                    if (patchesPrefs != null) {
+                        GboardGlassSettings.writeEnabled(patchesPrefs, value);
+                        if (!value) {
+                            GboardGlassOverlayRuntime.removeAll();
+                        }
                         renderCurrentScreenSafely();
                     }
                 }));

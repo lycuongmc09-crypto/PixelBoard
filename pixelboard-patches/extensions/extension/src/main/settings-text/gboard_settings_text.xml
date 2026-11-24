@@ -807,6 +807,20 @@
         <translation locale="en">It is currently unclear whether another download is needed. Verify that you used a bundle or split APKM and applied the patch with PixelBoard Patcher; a standalone APK cannot work.\nTap to view the APKMirror download page</translation>
         <translation locale="ar">من غير الواضح حالياً ما إذا كان يلزم تنزيل آخر. تأكد من أنك استخدمت حزمة مجمّعة أو مجزأة (APKM) وطبّقت الترقيع عبر PixelBoard Patcher؛ فحزم APK المستقلة لن تعمل.\nانقر لعرض صفحة التنزيل على APKMirror</translation>
     </string>
+    <string name="gboard_patches_glass_overlay_enabled_title">
+        <translation locale="en">Liquid Glass (experimental)</translation>
+        <translation locale="es">Cristal líquido (experimental)</translation>
+        <translation locale="fr">Verre liquide (expérimental)</translation>
+        <translation locale="de">Flüssigglas (experimentell)</translation>
+        <translation locale="it">Vetro liquido (sperimentale)</translation>
+        <translation locale="pt">Vidro líquido (experimental)</translation>
+        <translation locale="ru">Жидкое стекло (эксперимент)</translation>
+        <translation locale="vi">Kính lỏng (thử nghiệm)</translation>
+    </string>
+    <string name="gboard_patches_glass_overlay_enabled_summary">
+        <translation locale="en">Adds a frosted glass layer to the voice typing toolbar. Experimental; may affect performance on low-end devices.</translation>
+        <translation locale="vi">Thêm lớp kính mờ vào thanh công cụ nhập bằng giọng nói. Thử nghiệm; có thể ảnh hưởng hiệu năng trên máy yếu.</translation>
+    </string>
     <string name="gboard_patches_rounded_keys_enabled_title">
         <translation locale="en">Rounded Keys</translation>
         <translation locale="es">Teclas redondeadas</translation>
