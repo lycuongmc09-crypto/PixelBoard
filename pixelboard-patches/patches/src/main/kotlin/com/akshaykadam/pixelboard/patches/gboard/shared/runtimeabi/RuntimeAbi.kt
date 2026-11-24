@@ -34,6 +34,7 @@ internal enum class RuntimeCallId(internal val encodedAbi: String) {
     RAMBLER_MINIMIZE_KEY_RUNTIME_PLACE_MINIMIZE_KEY("Lcom/akshaykadam/pixelboard/extension/rambler/GboardRamblerMinimizeKeyRuntime;->placeMinimizeKey()I"),
     RAMBLER_MINIMIZE_KEY_RUNTIME_CLEAR_MINIMIZE_KEY("Lcom/akshaykadam/pixelboard/extension/rambler/GboardRamblerMinimizeKeyRuntime;->clearMinimizeKey()I"),
     RAMBLER_MINIMIZE_KEY_RUNTIME_REVEAL_MINIMIZE_KEY("Lcom/akshaykadam/pixelboard/extension/rambler/GboardRamblerMinimizeKeyRuntime;->revealMinimizeKey(Landroid/view/ViewGroup;)V"),
+    GLASS_OVERLAY_RUNTIME_INSTALL("Lcom/akshaykadam/pixelboard/extension/glass/GboardGlassOverlayRuntime;->install(Landroid/view/ViewGroup;)V"),
     KEYBOARD_RUNTIME_SANITIZE_KEY_LABEL("Lcom/akshaykadam/pixelboard/extension/keyboard/GboardKeyboardRuntime;->sanitizeKeyLabel(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;"),
     KEYBOARD_RUNTIME_PERFORM_HAPTIC_FEEDBACK("Lcom/akshaykadam/pixelboard/extension/keyboard/GboardKeyboardRuntime;->performHapticFeedback(Landroid/view/View;I)Z"),
     LANGUAGE_CYCLE_RUNTIME_NEXT_ENTRY("Lcom/akshaykadam/pixelboard/extension/language/GboardLanguageCycleRuntime;->nextEntry(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object;"),

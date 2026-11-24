@@ -27,6 +27,7 @@ import com.akshaykadam.pixelboard.patches.gboard.features.accessibility.gboardFe
 import com.akshaykadam.pixelboard.patches.gboard.features.rambler.gboardRamblerDictationPromptFixPatch
 import com.akshaykadam.pixelboard.patches.gboard.features.rambler.gboardRamblerMinimizeKeyPatch
 import com.akshaykadam.pixelboard.patches.gboard.features.keyboard.gboardKeyboardSymbolKeyLabelPatch
+import com.akshaykadam.pixelboard.patches.gboard.features.glass.gboardGlassOverlayPatch
 import com.akshaykadam.pixelboard.patches.gboard.features.keyboard.gboardKeyboardHapticPatch
 import com.akshaykadam.pixelboard.patches.gboard.features.launchericon.gboardLauncherIconVisibilityPatch
 import com.akshaykadam.pixelboard.patches.gboard.features.language.gboardLanguageCycleDedupePatch
@@ -48,6 +49,7 @@ internal val gboardPatchesSettingsPatch = resourcePatch(
         gboardFeaturesMenuAccessibilityPatch,
         gboardRamblerDictationPromptFixPatch,
         gboardRamblerMinimizeKeyPatch,
+        gboardGlassOverlayPatch,
         gboardKeyboardSymbolKeyLabelPatch,
         gboardKeyboardHapticPatch,
         gboardLauncherIconVisibilityPatch,
